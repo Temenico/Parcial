@@ -10,6 +10,7 @@ class Cliente {
   +modificar()
   +eliminar()
   +consultar()
+  +consultarFactura()
 }
 
 class FacturaCliente {
@@ -65,9 +66,9 @@ class Inventario {
 }
 
 
-DetalleFactura --- FacturaCliente
-DetalleFactura <|--- Producto
-Inventario ---* Producto 
-FacturaCliente --- Cliente
+DetalleFactura ---* FacturaCliente : Composición
+DetalleFactura o--- Producto : Agregación
+Inventario ... Producto : Dependencia
+FacturaCliente --- Cliente : Asociación
 
 @enduml
