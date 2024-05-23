@@ -1,0 +1,73 @@
+@startuml Diagrama de Clases
+
+class Cliente {
+  +Id: int
+  +tipoDocumento: String
+  +documento: String
+  +nombre: String
+  +correo: String
+  +registrar()
+  +modificar()
+  +eliminar()
+  +consultar()
+}
+
+class FacturaCliente {
+  +NumeroFactura: id
+  +fecha: Date
+  +cliente: Cliente
+  +crear()
+  +modificar()
+  +eliminar()
+  +consultar()
+  +verDetalleFactura()
+}
+
+class DetalleFactura {
+  +Id: int
+  +cantidad: int
+  +valorBruto: float
+  +valorNeto: float
+  +valorDescuento: float
+  +valorTotal: float
+  +agregar()
+  +modificar()
+  +eliminar()
+  +consultar()
+  +consultaProducto()
+}
+
+class Producto {
+  +Codigo: id
+  +nombre: String
+  +descripcion: String
+  +categoria: String
+  +valor: float
+  +registrar()
+  +modificar()
+  +eliminar()
+  +consultar()
+  +consultarInventario()
+}
+
+class Inventario {
+  +Codigo: id
+  +stock: int
+  +fechaIngreso: Date
+  +fechaSalida: Date
+  +valorDescuento: float
+  +porcentajeIVA: float
+  +registrarEntrada()
+  +registrarSalida()
+  +modificar()
+  +eliminar()
+  +consultar()
+}
+
+
+DetalleFactura --- FacturaCliente
+DetalleFactura <|--- Producto
+Inventario ---* Producto 
+FacturaCliente --- Cliente
+
+@enduml
